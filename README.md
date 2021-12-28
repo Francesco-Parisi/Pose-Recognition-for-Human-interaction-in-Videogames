@@ -70,3 +70,35 @@ while l<len(ListImage):
 ```
 
 La variabile contatore viene utilizzata per scorrere l’array, in modo tale da passare singolarmente ciascun path alla rete FAN, la quale procederà al rilevamento e all’allineamento facciale. Nel caso in cui la rete non rilevi la presenza di un volto, è stata data come eccezione un’immagine di test, mostrando all’utente da terminale un messaggio di mancato riconoscimento facciale.
+
+## Rilevamento e Riconoscimento del volto
+
+Una volta acquisite le immagini si è proceduto al rilevamento e riconoscimento del volto, ottenuto sfruttando la rete FAN (Face-Alignment Network), in grado di ricavare le proiezioni 2D e 3D dei punti di riferimento facciali.
+
+### Face-Alignment Network
+
+![Face-Alignment Network ](images/fan.png)
+
+In tale sistema è stata impiegata la “Face-Alignment Network” (FAN). Sviluppata da Adrian Bulat, FAN è una rete neurale all’avanguardia per la localizzazione dei punti di riferimento del volto, pre-addestrata per l'allineamento di volti in 2D e 3D e valutata su centinaia di migliaia di immagini. Tale rete si è mostrata fin da subito affidabile e con un basso margine di errori, garantendo una considerevole capacità di resistenza a posa, risoluzione e illuminazione. I test eseguiti da Adrian Bulat su set di dati indipendenti, rispettivamente per il 2D, Dal 2D al 3D e il 3D, hanno mostrato ottimi risultati. Lo sviluppo del progetto non ha previsto un addestramento della macchina utilizzata, poiché la rete risulta pre-addestrata e quindi in grado di poter effettuare senza alcun problema il riconoscimento e l’allineamento dei punti facciali. Una volta ricevuta un’immagine RGB in input, viene riconosciuto un numero fissato di punti per ogni area del viso in questione.
+
+```sh
+preds = fa.get_landmarks(input_img)[-1]
+# 2D-Plot
+plot_style = dict(marker='o',
+markersize=4,
+linestyle='-',
+lw=2)
+pred_type = collections.namedtuple('prediction_type', ['slice', 'color'])
+pred_types = {'face': pred_type(slice(0, 17), (0.682, 0.780, 0.909, 0.5)),
+'eyebrow1': pred_type(slice(17, 22), (1.0, 0.498, 0.055, 0.4)),
+'eyebrow2': pred_type(slice(22, 27), (1.0, 0.498, 0.055, 0.4)),
+'nose': pred_type(slice(27, 31), (0.345, 0.239, 0.443, 0.4)),
+'nostril': pred_type(slice(31, 36), (0.345, 0.239, 0.443, 0.4)),
+'eye1': pred_type(slice(36, 42), (0.596, 0.875, 0.541, 0.3)),
+'eye2': pred_type(slice(42, 48), (0.596, 0.875, 0.541, 0.3)),
+'lips': pred_type(slice(48, 60), (0.596, 0.875, 0.541, 0.3)),
+'teeth': pred_type(slice(60, 68), (0.596, 0.875, 0.541, 0.4))
+}
+```
+
+Le informazioni ottenute da FAN sono contenute all’interno della variabile preds. La variabile **preds** è un array bidimensionale, caratterizzato dai punti di riferimento facciali individuati dalla rete, in particolare al suo interno sono contenute le coordinate di ogni punto riconosciuto. Dal codice 2.4 possiamo vedere che i punti riconosciuti sono organizzati secondo una struttura ben definita, rappresentata da pred_type. Pred_type è una struttura che permette di organizzare i punti facciali suddividendoli in 9 aree specifiche del volto, tra cui: faccia (il contorno del viso), sopracciglio sinistro, sopracciglio destro, naso, narici, occhio sinistro, occhio destro, labbra e denti. Ottenuti i punti di riferimento 2D, il compito di FAN è quello di convertirli in 3D, ovvero creare delle proiezioni a partire dai punti di riferimento facciali 2D. Per realizzare tale obiettivo è stata introdotta un’estensione della rete FAN dal 2D al 3D in grado di poter stimare la coordinata z (ovvero la profondità di ciascun punto). Una volta ottenute anche tali informazioni, il sistema procede con la realizzazione di grafici 2D e 3D applicati all’immagine in input. Di seguito vengono mostrati alcuni esempi di grafici 2D ottenuti dal riconoscimento.
