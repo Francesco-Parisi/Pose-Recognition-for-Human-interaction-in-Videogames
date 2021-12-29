@@ -189,6 +189,6 @@ Nell’ambientazione Natura l’utente si trova in un ambiente tranquillo, carat
 
 ![Integrazione in Ambientazioni 3D e Videogames ](images/natura.png)
 
-Tale sistema, integrandolo in altri progetti in cui si richiedeva un maggior coinvolgimento degli utenti nell'ambientazione, ha quindi evidenziando una certa flessibilità e validità.
+Tale sistema, integrandolo in altri progetti in cui si richiedeva un maggior coinvolgimento degli utenti nell'ambientazione, ha quindi evidenziando una certa flessibilità di utilizzo e validità.
 
 ### Ambiente di Sviluppo
