@@ -171,3 +171,24 @@ Una volta salvato il vettore di posizione di ciascun landmark, lo script rettaPe
 La posizione iniziale della linea è stata calcolata individuando il punto medio tra i due occhi, mentre la posizione finale è ottenuta sommando alle normali della mesh il vettore di posizione del gameObject in cui lo script è stato aggiunto. Il risultato finale è mostrato come segue:
 
 ![Orientamento del volto ](images/mask.gif)
+
+### Integrazione in Ambientazioni 3D e Videogames
+
+Determinato l'orientamento del volto, si è deciso di integrare il sistema in alcuni progetti di tesi sviluppati dai alcuni miei colleghi. Trattandosi di giochi e ambientazioni 3D basate sul riconoscimento dell’emozione dell’utente, l’idea è stata quella di poter integrare questo progetto per coinvolgere maggiormente l’utente nella sessione di gioco e nell’ambientazione circostante. Per mettere in pratica tale idea si è proceduto analizzando i modi e le dinamiche con cui l’utente possa interagire maggiormente con ogni applicativo sviluppato, rendendolo divertente e avvincente. Mentre l’utente sta giocando oppure se si trova in una particolare ambientazione, viene rilevato il suo volto, identificato l’orientamento e da esso generati oggetti che vanno a ostacolare/sorprendere l’utente. Lo spawn degli oggetti è stato realizzato in modo che quando l’utente guarda in una direzione, l’oggetto viene generato dalla direzione opposta. Analizzando la direzione del volto e in particolare il raggio generato, si è pensato di dividere l’area visiva dell’utente in tre sezioni: sinistra, centro e destra.
+In un videogame incentrato sull’Air Hockey, gli oggetti che vengono creati sono pietre, le quali diventano parte attiva del game. Le pietre nel caso in cui l’utente guarda a sinistra o destra vengono fatte cadere sul tavolo da gioco impedendo il passaggio del dischetto e disturbando l’utente nel gioco. 
+
+Di seguito viene mostrato il risulto finale:
+
+![Integrazione in Ambientazioni 3D e Videogames ](images/air-hockey.png)
+
+In un altro progetto la tecnica utilizzata è stata la medesima, ma essendo un applicativo con diverse ambientazioni 3D, la generazione degli oggetti è risultata singolare per ognuno. Nell’ambientazione spazio, per cercare di rendere l’utente sorpreso è stato fatto in modo che gli oggetti creati fossero caratteristici, generando un’astronave con effetti luminosi nel caso in cui l’utente guarda a sinistra, e un robottino nel caso in cui l’utente guarda a destra.
+
+![Integrazione in Ambientazioni 3D e Videogames ](images/spazio.png)
+
+Nell’ambientazione Natura l’utente si trova in un ambiente tranquillo, caratterizzato da un paesaggio con alberi e colline. Per far sì che l’utente possa interagire maggiormente, gli oggetti che vengono creati in base all’orientamento del volto sono animali, in particolare viene generato un coniglio se l’utente guarda alla sua sinistra e un maialino se l’utente guarda alla sua destra.
+
+![Integrazione in Ambientazioni 3D e Videogames ](images/natura.png)
+
+Tale sistema, integrandolo in altri progetti in cui si richiedeva un maggior coinvolgimento degli utenti nell'ambientazione, ha quindi evidenziando una certa flessibilità e validità.
+
+### Ambiente di Sviluppo
