@@ -1,5 +1,24 @@
 # Human-Pose-Recognition-in-Videogames
 
+### Installazione
+
+Lo sviluppo del progetto ha previsto principalmente l’impiego di:
+
+• Python 3.7
+
+• Unity 2019.3.6f1 (64-bit)
+
+• Anaconda Navigator 2.0.1
+
+Una volta installato tutto il necessario, si è proceduto da Anaconda navigaor con la creazione di un ambiente di lavoro, facilitando l'installazione dei packages essenziali per lo sviluppo ottimale del progetto. Di seguito viene mostrato il comando necessario per l'installazione del progetto di Adrian Bulat e quello necessario per l'installazione dei packages:
+
+```
+conda install -c 1adrianb face_alignment
+pip install requirements.txt
+```
+
+Terminata l'installazione è necessario importare in Unity 3D il progetto Unity-Socket-Server, necessario per la ricezione e creazione in real-time della mappatura 3D del viso.
+
 ## Descrizione
 Questo progetto consiste, sulla base di un sistema per il rilevamento facciale già sviluppato da terzi, nella stima della direzione del volto e la sua applicazione in ambientazioni 3D e videogames.
 L'obiettivo è stato quello di creare un sistema in grado di acquisire ed elaborare una sequenza di immagini allo scopo di estrarre le informazioni relative al volto rilevato per inviarle ad un server tcp, incaricato di decodificarle per creare una mappatura 3D e infine determinare il suo orientamento.
@@ -190,22 +209,3 @@ Nell’ambientazione Natura l’utente si trova in un ambiente tranquillo, carat
 ![Integrazione in Ambientazioni 3D e Videogames ](images/natura.png)
 
 Tale sistema, integrandolo in altri progetti in cui si richiedeva un maggior coinvolgimento degli utenti nell'ambientazione, ha quindi evidenziando una certa flessibilità di utilizzo e validità.
-
-### Ambiente di Sviluppo
-
-Lo sviluppo del progetto ha previsto principalmente l’impiego di:
-
-• Python 3.7
-
-• Unity 2019.3.6f1 (64-bit)
-
-• Anaconda Navigator 2.0.1
-
-Una volta installato tutto il necessario, si è proceduto da Anaconda navigaor con la creazione di un ambiente di lavoro, facilitando l'installazione dei packages essenziali per lo sviluppo ottimale del progetto. Di seguito viene mostrato il comando necessario per l'installazione del progetto di Adrian Bulat e quello necessario per l'installazione dei packages:
-
-```
-conda install -c 1adrianb face_alignment
-pip install requirements.txt
-```
-
-Terminata l'installazione è necessario importare in Unity 3D il progetto Unity-Socket-Server, necessario per la ricezione e creazione in real-time della mappatura 3D del viso.
