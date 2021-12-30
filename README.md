@@ -13,8 +13,8 @@ Lo sviluppo del progetto ha previsto principalmente l’impiego di:
 Una volta installato tutto il necessario, si è proceduto da Anaconda navigaor con la creazione di un ambiente di lavoro, facilitando l'installazione dei packages essenziali per lo sviluppo ottimale del progetto. Di seguito viene mostrato il comando necessario per l'installazione del progetto di Adrian Bulat e quello necessario per l'installazione dei packages:
 
 ```
-conda install -c 1adrianb face_alignment
-pip install requirements.txt
+pip install face-alignment
+pip install -r requirements.txt
 ```
 
 Terminata l'installazione è necessario importare in Unity 3D il progetto Unity-Socket-Server, necessario per la ricezione e creazione in real-time della mappatura 3D del viso.
