@@ -1,6 +1,6 @@
 # Human-Pose-Recognition-in-Videogames
 
-### Installazione
+## Installazione
 
 Lo sviluppo del progetto ha previsto principalmente l’impiego di:
 
