@@ -132,7 +132,7 @@ Una volta effettuate le operazioni iniziali di acquisizione e riconoscimento, il
 
 Il processo di rilevamento e riconoscimento del volto avviene quindi in due passi principali: per prima cosa, data l’immagine acquisita, ne vengono riconosciuti i landmarks tramite l’utilizzo della rete FAN. Successivamente tali landmarks vengono utilizzati per la realizzazione dei grafici 2D e 3D. Per la creazione di una mappatura 3D del volto è necessario gestire le coordinate dei landmarks, cioè convertirle in uno specifico formato per poi essere inviate al server tcp, che riceverà tali coordinate, le quali verranno decodificate e utilizzate per istanziare i vari landmarks in Unity, ottenendo così una mesh 3D del volto riconosciuto.
 
-## Estrazione delle coordinate
+### Estrazione delle coordinate
 
 La variabile preds è un’array bidimensionale in cui sono contenute le coordinate tridimensionali (x, y, z) di ciascun landmark, per un totale di 68 landmarks. Tale risultato è ottenuto utilizzando la funzione **get_landmarks(self, image_or_path, detected_faces=None)** contenuta nel file **api.py**, dove al suo interno sono presenti tutte le funzioni necessarie per la rilevazione e il riconoscimento dei landmarks. Tale funzione ha come risultato il valore ottenuto dalla funzione get_landmarks_from_image(image_or_path, detected_faces=None):
 
@@ -176,7 +176,7 @@ Successivamente è stata implementata la funzione man_string(string), in grado d
 
 ![Decodifica delle coordinate dei landmark ](images/coordinate-finali.png)
 
-### Rappresentazione Volto in Unity
+## Rappresentazione Volto in Unity
 
 Una volta estrapolate le coordinate dai landmarks riconosciuti, lo sviluppo del sistema si è poi concentrato sulla loro rappresentazione grafica in Unity, ottenendo lo stesso grafico generato nella GUI di matplotlib. Si e proceduto utilizzando le coordinate di formato x,y,z di ciascun landmark per istanziare un gameObject di tipo sfera. La sfera, chiamata “marker”, è un gameObject di tipo prefab. Per poter istanziare correttamente ogni landmark è stato utilizzato lo script CreaOggetti.cs. Innanzitutto sono state istanziate la variabile **controllerInput**, che permette di comunicare con SCL_PositionalControllerInput per prendere in input le coordinate ricevute e decodificate, e **proiettile** per istanziare il gameObject sfera. Affinchè ogni prefab possa essere istanziato è stato utilizzato il metodo Update(), in quanto essendo richiamato ad ogni frame risulta il più adatto per ricevere in real-time le coordinate. Tale tecnica permette la realizzazione di una singola mappatura 3D del volto riconosciuto.
 
@@ -191,7 +191,7 @@ La posizione iniziale della linea è stata calcolata individuando il punto medio
 
 ![Orientamento del volto ](images/mask.gif)
 
-## Integrazione in Ambientazioni 3D e Videogames
+### Integrazione in Ambientazioni 3D e Videogames
 
 Determinato l'orientamento del volto, si è deciso di integrare il sistema in alcuni progetti di tesi sviluppati dai alcuni miei colleghi. Trattandosi di giochi e ambientazioni 3D basate sul riconoscimento dell’emozione dell’utente, l’idea è stata quella di poter integrare questo progetto per coinvolgere maggiormente l’utente nella sessione di gioco e nell’ambientazione circostante. Per mettere in pratica tale idea si è proceduto analizzando i modi e le dinamiche con cui l’utente possa interagire maggiormente con ogni applicativo sviluppato, rendendolo divertente e avvincente. Mentre l’utente sta giocando oppure se si trova in una particolare ambientazione, viene rilevato il suo volto, identificato l’orientamento e da esso generati oggetti che vanno a ostacolare/sorprendere l’utente. Lo spawn degli oggetti è stato realizzato in modo che quando l’utente guarda in una direzione, l’oggetto viene generato dalla direzione opposta. Analizzando la direzione del volto e in particolare il raggio generato, si è pensato di dividere l’area visiva dell’utente in tre sezioni: sinistra, centro e destra.
 In un videogame incentrato sull’Air Hockey, gli oggetti che vengono creati sono pietre, le quali diventano parte attiva del game. Le pietre nel caso in cui l’utente guarda a sinistra o destra vengono fatte cadere sul tavolo da gioco impedendo il passaggio del dischetto e disturbando l’utente nel gioco. 
