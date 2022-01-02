@@ -10,7 +10,7 @@ Lo sviluppo del progetto ha previsto principalmente l’impiego di:
 
 • Anaconda Navigator 2.0.1
 
-Una volta installato tutto il necessario, si è proceduto da Anaconda navigaor con la creazione di un ambiente di lavoro, facilitando l'installazione dei packages essenziali per lo sviluppo ottimale del progetto. Di seguito viene mostrato il comando necessario per l'installazione del progetto di Adrian Bulat e quello necessario per l'installazione dei packages:
+Una volta installato tutto il necessario, si è proceduto da Anaconda navigator con la creazione di un ambiente di lavoro, facilitando l'installazione dei packages essenziali per lo sviluppo ottimale del progetto. Di seguito viene mostrato il comando necessario per l'installazione del progetto di Adrian Bulat e quello necessario per l'installazione dei packages:
 
 ```
 pip install face-alignment
