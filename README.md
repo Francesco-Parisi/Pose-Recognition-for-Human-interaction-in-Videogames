@@ -1,4 +1,4 @@
-# Human-Pose-Recognition-in-Videogames
+# Pose-Recognition-for-Human-interaction-in-Videogames
 
 ## Installazione
 
